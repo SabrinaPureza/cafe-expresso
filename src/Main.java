@@ -1,25 +1,75 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        // Criando produtos (cardápio)
-        Produto cafe = new Produto("Café Expresso", 5.00);
-        Produto pao = new Produto("Pão de Queijo", 4.50);
+        Scanner scanner = new Scanner(System.in);
 
-        // Criando pedido
+        Produto cafe = new Produto("Cafe Expresso", 5.0);
+        Produto pao = new Produto("Pao de Queijo", 4.5);
+        Produto cappuccino = new Produto("Cappuccino", 7.0);
+
         Pedido pedido = new Pedido();
 
-        // Adicionando itens
-        pedido.adicionarItem(cafe, 2);
-        pedido.adicionarItem(pao, 3);
+        int opcao;
 
-        // Exibindo total
-        System.out.println("Total: R$ " + pedido.calcularTotal());
+        do {
+            System.out.println("\n=== CAFE EXPRESSO ☕ ===");
+            System.out.println("1 - Adicionar Cafe");
+            System.out.println("2 - Adicionar Pao de Queijo");
+            System.out.println("3 - Adicionar Cappuccino");
+            System.out.println("4 - Ver Pedido");
+            System.out.println("5 - Pagar");
+            System.out.println("6 - Enviar para Preparo");
+            System.out.println("7 - Finalizar Pedido");
+            System.out.println("0 - Sair");
+            System.out.print("Escolha: ");
 
-        // Fluxo do pedido
-        pedido.pagar();
-        pedido.enviarParaCozinha();
-        pedido.finalizarPedido();
+            opcao = scanner.nextInt();
 
-        System.out.println("Status final: " + pedido.getStatus());
+            switch (opcao) {
+
+                case 1:
+                    System.out.print("Quantidade: ");
+                    pedido.adicionarItem(cafe, scanner.nextInt());
+                    break;
+
+                case 2:
+                    System.out.print("Quantidade: ");
+                    pedido.adicionarItem(pao, scanner.nextInt());
+                    break;
+
+                case 3:
+                    System.out.print("Quantidade: ");
+                    pedido.adicionarItem(cappuccino, scanner.nextInt());
+                    break;
+
+                case 4:
+                    pedido.mostrarPedido();
+                    break;
+
+                case 5:
+                    pedido.pagar();
+                    break;
+
+                case 6:
+                    pedido.preparar();
+                    break;
+
+                case 7:
+                    pedido.finalizar();
+                    break;
+
+                case 0:
+                    System.out.println("Encerrando...");
+                    break;
+
+                default:
+                    System.out.println("Opcao invalida.");
+            }
+
+        } while (opcao != 0);
+
+        scanner.close();
     }
 }

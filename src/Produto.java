@@ -1,17 +1,17 @@
 public class Produto {
     private String nome;
-    private double precoUnitario;
+    private double preco;
 
-    public Produto(String nome, double precoUnitario) {
+    public Produto(String nome, double preco) {
         this.nome = nome;
-        this.precoUnitario = precoUnitario;
+        this.preco = preco;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public double getPrecoUnitario() {
-        return precoUnitario;
+    public double getPreco() {
+        return preco;
     }
 }

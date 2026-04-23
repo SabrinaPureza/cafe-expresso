@@ -7,15 +7,11 @@ public class ItemPedido {
         this.quantidade = quantidade;
     }
 
-    public double calcularSubtotal() {
-        return produto.getPrecoUnitario() * quantidade;
+    public double getSubtotal() {
+        return produto.getPreco() * quantidade;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
+    public String getDescricao() {
+        return produto.getNome() + " x" + quantidade + " = R$ " + getSubtotal();
     }
 }
